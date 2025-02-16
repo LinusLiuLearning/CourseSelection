@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace CourseSelection.Service.Interface
 {
-   public interface IStudentInterface
+   public interface IStudentServiceInterface
     {
         /// <summary>
         /// 查詢學生列表
         /// </summary>
         /// <returns></returns>
-        IEnumerable<StudentResultModel> GetList(StudentSearchInfo info);
+        IEnumerable<StudentResultModel> GetList(StudentInfo info);
 
         /// <summary>
         /// 單筆學生資料
