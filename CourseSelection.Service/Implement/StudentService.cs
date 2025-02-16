@@ -18,7 +18,7 @@ namespace CourseSelection.Service.Implement
     /// <summary>
     /// 管理學生資料
     /// </summary>
-    public class StudentService : IStudentServiceInterface
+    public class StudentService : IStudentService
     {
         private readonly IStudentRepository __studentRepository;
         private readonly IMapper _mapper;

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CourseSelection.Service.Interface
 {
-   public interface IStudentServiceInterface
+   public interface IStudentService
     {
         /// <summary>
         /// 查詢學生列表
