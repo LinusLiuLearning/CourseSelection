@@ -15,7 +15,7 @@ namespace CourseSelection.Controllers
     /// </summary>
     [ApiController]
     [Route("[controller]")]
-    public class StudentController : Controller
+    public class StudentController : ControllerBase
     {
         private readonly IMapper _mapper;
         private readonly IStudentService _studentService;
