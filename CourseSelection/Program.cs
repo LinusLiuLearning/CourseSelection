@@ -5,6 +5,8 @@ using CourseSelection.Service.Interface;
 using CourseSelection.Service.Implement;
 using CourseSelection.Repository.Interface;
 using CourseSelection.Repository.Implement;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +28,27 @@ builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(m =>
+{
+    // API 服務簡介
+    m.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "學生選課 API",
+        Description = "學生選課 API",
+        Contact = new OpenApiContact
+        {
+            Name = "Linus",
+            Email = string.Empty,
+            Url = new Uri("https://google.com.tw"),
+        },
+    });
+
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    m.IncludeXmlComments(xmlPath);
+
+});
 
 var app = builder.Build();
 
@@ -38,7 +60,7 @@ if (app.Environment.IsDevelopment())
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
     });
-}
+};
 
 app.UseHttpsRedirection();
 
